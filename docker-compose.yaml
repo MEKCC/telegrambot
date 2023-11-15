@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    networks:
+      - my-pet-project-network
+    container_name: mysqlTelegramBot
+    ports:
+      - 4000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: testDB
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  my-pet-project-network:
+    driver: bridge
